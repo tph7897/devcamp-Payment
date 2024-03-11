@@ -1,6 +1,7 @@
 ## 레이아웃
 
-![image](https://github.com/tph7897/tph7897/assets/132332533/9f70aa01-f3f9-4e61-b02d-487351220ab7)
+![image](https://github.com/tph7897/tph7897/assets/132332533/7a9768c3-ac02-4233-859e-92dd3e458f5a)
+css 업데이트마다 변경 예정입니다.
 
 ## 페이지 구성
 
