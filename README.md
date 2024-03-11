@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 레이아웃
 
-## Getting Started
+![image](https://github.com/tph7897/tph7897/assets/132332533/9f70aa01-f3f9-4e61-b02d-487351220ab7)
 
-First, run the development server:
+## 페이지 구성
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. 주문상품정보
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   상품의 이미지, 이름, 옵션, 상품가격
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. 주문자정보
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   주문자의 이름, 전화번호, 이메일과 정보수정 기능
 
-## Learn More
+3. 배송정보
 
-To learn more about Next.js, take a look at the following resources:
+   상품을 받을 사람의 이름, 전화번호, 주소,상세주소, 우편번호, 및 배송정보 변경기능, 배송메모 기능
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. 쿠폰/ 포인트
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   주문자가 가지고 있는 쿠폰의 종류, 쿠폰번호 입력창, 보유 포인트
 
-## Deploy on Vercel
+5. 결제방법
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   신용카드, 가상계좌, 네이버페이, 토스페이 등 결제방법 선택
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+6. 최종결제금액 및 결제동의
+
+   상품가격, 쿠폰할인, 포인트사용, 배송비를 합한 총 결제금액, 적립예정 포인트, 결제동의, 결제버튼
+
+## 핵심기능
+
+1. 스크롤을 내려도 최종결제 금액 카드가 사용자를 따라와서 결제 금액을 항상 확인 할 수 있습니다.
+
+2. 반응형 페이지로 구성되어 있어 화면의 너비가 줄어들면 최종결제금액 카드가 화면의 최하단으로 이동합니다.
+
+## 업데이트 내역
+
+24.03.10(일): 프로젝트 생성
+
+24.03.11(월): 기본레이아웃 디자인
+
+## 배포 주소
+
+https://payment-peach.vercel.app/
