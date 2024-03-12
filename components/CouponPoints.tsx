@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const CouponPoints = () => {
   return (
@@ -11,10 +12,19 @@ const CouponPoints = () => {
       </CardHeader>
       <CardContent>
         <p>쿠폰</p>
-        <div className="flex w-full  items-center space-x-2 mb-4">
-          <Input type="text" placeholder="1,000" />
-          <Button type="submit">쿠폰적용</Button>
-        </div>
+        <Select>
+          <SelectTrigger className="mb-4">
+            <SelectValue placeholder="쿠폰을 선택해주세요." />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectItem value="5000">5천 원 할인쿠폰</SelectItem>
+              <SelectItem value="3000">3천 원 할인쿠폰</SelectItem>
+              <SelectItem value="30%">30% 할인쿠폰</SelectItem>
+              <SelectItem value="10%">10% 할인쿠폰</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
         <p>쿠폰 번호</p>
         <div className="flex w-full  items-center space-x-2 mb-4">
           <Input type="text" placeholder="쿠폰 번호 입력" />
