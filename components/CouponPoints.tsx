@@ -1,10 +1,18 @@
-import React from "react";
+"use client";
+
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Coupon, coupons } from "@/lib/coupons";
 
-const CouponPoints = () => {
+interface Props {
+  value: Coupon;
+  onValueChange: Dispatch<SetStateAction<Coupon>>;
+}
+
+const CouponPoints: React.FC<Props> = ({ value, onValueChange }) => {
   return (
     <Card>
       <CardHeader>
@@ -12,16 +20,17 @@ const CouponPoints = () => {
       </CardHeader>
       <CardContent>
         <p>쿠폰</p>
-        <Select>
+        <Select value={value} onValueChange={onValueChange}>
           <SelectTrigger className="mb-4">
-            <SelectValue placeholder="쿠폰을 선택해주세요." />
+            <SelectValue placeholder="쿠폰을 선택해주세요.">{value.description}</SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem value="5000">5천 원 할인쿠폰</SelectItem>
-              <SelectItem value="3000">3천 원 할인쿠폰</SelectItem>
-              <SelectItem value="30%">30% 할인쿠폰</SelectItem>
-              <SelectItem value="10%">10% 할인쿠폰</SelectItem>
+              {coupons.map((coupon) => (
+                <SelectItem key={coupon.id} value={coupon}>
+                  {coupon.description}
+                </SelectItem>
+              ))}
             </SelectGroup>
           </SelectContent>
         </Select>
