@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "PAYMENT",
   description: "patment next app",
+  icons: {
+    icon: "https://png.pngtree.com/png-vector/20190130/ourmid/pngtree-credit-card-commercial-element-cardfinancial-elementai-illustration-png-image_595759.jpg",
+  },
 };
 
 export default function RootLayout({

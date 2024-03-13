@@ -18,7 +18,7 @@ export default function Home() {
     value: "0",
     description: "쿠폰을 선택해주세요.",
   });
-  const [pointUsage, setPointUsage] = useState<number>(0);
+  const [pointUsage, setPointUsage] = useState<number>(7600);
   const [shippingFee, setShippingFee] = useState<number>(2500);
   return (
     <Card>
@@ -31,7 +31,7 @@ export default function Home() {
             <OrderInfo />
             <CustomerInfo />
             <ShippingInfo />
-            <CouponPoints value={coupon} onValueChange={setCoupon} />
+            <CouponPoints coupon={coupon} setCoupon={setCoupon} pointUsage={pointUsage} setPointUsage={setPointUsage} />
             <PaymentMethod />
           </section>
           <section className="flex-auto space-y-4 lg:w-[400px]">

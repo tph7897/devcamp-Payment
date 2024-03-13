@@ -8,11 +8,29 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Coupon, coupons } from "@/lib/coupons";
 
 interface Props {
-  value: Coupon;
-  onValueChange: Dispatch<SetStateAction<Coupon>>;
+  coupon: Coupon;
+  setCoupon: Dispatch<SetStateAction<Coupon>>;
+  pointUsage: number;
+  setPointUsage: Dispatch<SetStateAction<number>>;
 }
 
-const CouponPoints: React.FC<Props> = ({ value, onValueChange }) => {
+const CouponPoints: React.FC<Props> = ({ coupon, setCoupon, pointUsage, setPointUsage }) => {
+  const [inputValue, setInputValue] = useState<string>("");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+  };
+
+  const handleSubmit = () => {
+    const parsedValue = parseInt(inputValue.replace(/,/g, ""), 10);
+    if (parsedValue <= pointUsage) {
+      setPointUsage(parsedValue);
+    } else {
+      alert("입력된 값이 보유 포인트보다 큽니다.");
+    }
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -20,9 +38,9 @@ const CouponPoints: React.FC<Props> = ({ value, onValueChange }) => {
       </CardHeader>
       <CardContent>
         <p>쿠폰</p>
-        <Select value={value} onValueChange={onValueChange}>
+        <Select value={coupon} onValueChange={setCoupon}>
           <SelectTrigger className="mb-4">
-            <SelectValue placeholder="쿠폰을 선택해주세요.">{value.description}</SelectValue>
+            <SelectValue placeholder="쿠폰을 선택해주세요.">{coupon.description}</SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
@@ -41,10 +59,12 @@ const CouponPoints: React.FC<Props> = ({ value, onValueChange }) => {
         </div>
         <p>포인트</p>
         <div className="flex w-full  items-center space-x-2">
-          <Input type="text" placeholder="2,300" />
-          <Button type="submit">전액사용</Button>
+          <Input type="number" placeholder="7,600" value={inputValue} onChange={handleInputChange} />
+          <Button type="button" onClick={handleSubmit}>
+            전액사용
+          </Button>
         </div>
-        <p>보유포인트 2,300</p>
+        <p>보유포인트 7,600</p>
         <p className="text-slate-400">5,000 포인트 이상 보유 및 10,000원 이상 구매시 사용 가능</p>
       </CardContent>
     </Card>
