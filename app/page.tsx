@@ -18,7 +18,7 @@ export default function Home() {
     value: "0",
     description: "쿠폰을 선택해주세요.",
   });
-  const [pointUsage, setPointUsage] = useState<number>(7600);
+  const [pointUsage, setPointUsage] = useState<number>(2300);
   const [shippingFee, setShippingFee] = useState<number>(2500);
   return (
     <Card>
