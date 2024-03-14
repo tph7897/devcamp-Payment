@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
@@ -10,25 +10,25 @@ import { Coupon, coupons } from "@/lib/coupons";
 interface Props {
   coupon: string;
   setCoupon: Dispatch<SetStateAction<string>>;
-  pointUsage: number;
-  setPointUsage: Dispatch<SetStateAction<number>>;
+  pointUsage: string;
+  setPointUsage: Dispatch<SetStateAction<string>>;
 }
 
 const CouponPoints: React.FC<Props> = ({ coupon, setCoupon, pointUsage, setPointUsage }) => {
   const [inputValue, setInputValue] = useState<string>("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setInputValue(value);
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    let value: string = event.target.value;
+    // 입력된 값이 허용된 범위를 초과하는지 확인
+    if (value !== "" && parseInt(value) > 7600) {
+      // 허용된 범위를 초과하는 경우 7600으로 설정
+      value = "7600";
+    }
+    setPointUsage(value);
   };
 
   const handleSubmit = () => {
-    const parsedValue = parseInt(inputValue.replace(/,/g, ""), 10);
-    if (parsedValue <= pointUsage) {
-      setPointUsage(parsedValue);
-    } else {
-      alert("입력된 값이 보유 포인트보다 큽니다.");
-    }
+    setPointUsage("7600");
   };
 
   return (
@@ -59,7 +59,7 @@ const CouponPoints: React.FC<Props> = ({ coupon, setCoupon, pointUsage, setPoint
         </div>
         <p>포인트</p>
         <div className="flex w-full  items-center space-x-2">
-          <Input type="number" placeholder="7,600" value={inputValue} onChange={handleInputChange} />
+          <Input type="number" min="1" max="7600" placeholder="7,600" value={pointUsage} onChange={handleInputChange} />
           <Button type="button" onClick={handleSubmit}>
             전액사용
           </Button>

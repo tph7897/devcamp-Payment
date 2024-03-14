@@ -2,12 +2,12 @@ import React from "react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
-import { Coupon, searchCoupon } from "@/lib/coupons";
+import { searchCoupon } from "@/lib/coupons";
 
 interface Props {
   productPrice: number;
   coupon: string;
-  pointUsage: number;
+  pointUsage: string;
   shippingFee: number;
 }
 
@@ -44,13 +44,13 @@ const FinalPaymentAgreement: React.FC<Props> = ({ productPrice, coupon, pointUsa
           <p className="text-slate-400">배송비</p>
           <p className="text-right">{`${formatNumber(productPrice)}원`}</p>
           <p className="text-right">{`-${PriceAfterCoupon(coupon, productPrice)}원`}</p>
-          <p className="text-right">{`-${formatNumber(pointUsage)}원`}</p>
+          <p className="text-right">{`-${formatNumber(+pointUsage)}원`}</p>
           <p className="text-right">{`+${formatNumber(shippingFee)}원`}</p>
         </div>
         <div className="border-b my-4"></div>
         <div className="flex justify-between">
           <p className="text-slate-400">총 결제금액</p>
-          <p className="text-right text-primary">{`${formatNumber(productPrice - PriceAfterCoupon(coupon, productPrice) - pointUsage + shippingFee)}원`}</p>
+          <p className="text-right text-primary">{`${formatNumber(productPrice - PriceAfterCoupon(coupon, productPrice) - +pointUsage + shippingFee)}원`}</p>
         </div>
       </CardContent>
       <hr className="mt-auto mb-4" />
