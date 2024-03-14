@@ -45,6 +45,8 @@ css 업데이트마다 변경 예정입니다.
 
 24.03.13(수): 쿠폰기능(임시)적용 포인트기능(임시)적용
 
+24.03.14(목): CouponPoint컴포넌트 타입에러 수정
+
 ## 배포 주소
 
-https://payment-peach.vercel.app/ - 쿠폰기능, 포인트기능 vercel 오류로 아직 적용 안되었습니다.
+https://payment-peach.vercel.app/

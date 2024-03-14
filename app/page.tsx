@@ -12,7 +12,7 @@ import { useState } from "react";
 export default function Home() {
   const [productPrice, setProductPrice] = useState<number>(84900);
   const [coupon, setCoupon] = useState<string>("쿠폰을 선택해주세요.");
-  const [pointUsage, setPointUsage] = useState<number>(2300);
+  const [pointUsage, setPointUsage] = useState<number>(7600);
   const [shippingFee, setShippingFee] = useState<number>(2500);
   return (
     <Card>
