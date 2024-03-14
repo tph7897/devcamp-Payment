@@ -8,8 +8,8 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Coupon, coupons } from "@/lib/coupons";
 
 interface Props {
-  coupon: Coupon;
-  setCoupon: Dispatch<SetStateAction<Coupon>>;
+  coupon: string;
+  setCoupon: Dispatch<SetStateAction<string>>;
   pointUsage: number;
   setPointUsage: Dispatch<SetStateAction<number>>;
 }
@@ -40,12 +40,12 @@ const CouponPoints: React.FC<Props> = ({ coupon, setCoupon, pointUsage, setPoint
         <p>쿠폰</p>
         <Select value={coupon} onValueChange={setCoupon}>
           <SelectTrigger className="mb-4">
-            <SelectValue placeholder="쿠폰을 선택해주세요.">{coupon.description}</SelectValue>
+            <SelectValue placeholder="쿠폰을 선택해주세요.">{coupon}</SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               {coupons.map((coupon) => (
-                <SelectItem key={coupon.id} value={coupon}>
+                <SelectItem key={coupon.id} value={coupon.description}>
                   {coupon.description}
                 </SelectItem>
               ))}

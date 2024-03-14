@@ -7,17 +7,11 @@ import OrderInfo from "@/components/OrderInfo";
 import PaymentMethod from "@/components/PaymentMethod";
 import ShippingInfo from "@/components/ShippingInfo";
 import { Card } from "@/components/ui/card";
-import { Coupon } from "@/lib/coupons";
 import { useState } from "react";
 
 export default function Home() {
   const [productPrice, setProductPrice] = useState<number>(84900);
-  const [coupon, setCoupon] = useState<Coupon>({
-    id: 0,
-    type: "fixed",
-    value: "0",
-    description: "쿠폰을 선택해주세요.",
-  });
+  const [coupon, setCoupon] = useState<string>("쿠폰을 선택해주세요.");
   const [pointUsage, setPointUsage] = useState<number>(2300);
   const [shippingFee, setShippingFee] = useState<number>(2500);
   return (

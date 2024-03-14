@@ -31,3 +31,7 @@ export const coupons: Coupon[] = [
     description: "3천 원 할인 쿠폰",
   },
 ];
+
+export function searchCoupon(description: string): Coupon | undefined {
+  return coupons.find((coupon) => coupon.description === description);
+}

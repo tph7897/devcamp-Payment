@@ -2,11 +2,11 @@ import React from "react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
-import { Coupon } from "@/lib/coupons";
+import { Coupon, searchCoupon } from "@/lib/coupons";
 
 interface Props {
   productPrice: number;
-  coupon: Coupon;
+  coupon: string;
   pointUsage: number;
   shippingFee: number;
 }
@@ -16,19 +16,21 @@ const FinalPaymentAgreement: React.FC<Props> = ({ productPrice, coupon, pointUsa
     return new Intl.NumberFormat(locale).format(amount);
   }
 
-  function PriceAfterCoupon(coupon: Coupon, productPrice: number) {
+  function PriceAfterCoupon(coupon: string, productPrice: number) {
+    const findCoupon = searchCoupon(coupon);
     let discount = 0;
-    if (coupon) {
-      if (coupon.type === "percentage") {
+    if (findCoupon) {
+      if (findCoupon.type === "percentage") {
         // 퍼센트 할인
-        discount = (parseFloat(coupon.value) / 100) * productPrice;
-      } else if (coupon.type === "fixed") {
+        discount = (parseFloat(findCoupon.value) / 100) * productPrice;
+      } else if (findCoupon.type === "fixed") {
         // 고정 할인
-        discount = parseFloat(coupon.value);
+        discount = parseFloat(findCoupon.value);
       }
     }
     return discount;
   }
+
   return (
     <Card className="bg-white lg:fixed lg:w-[400px] flex flex-col">
       <CardHeader>
